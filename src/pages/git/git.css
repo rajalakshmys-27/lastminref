@@ -1,0 +1,46 @@
+.git-page {
+  /* max-width: 900px; */
+  width: 1080px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.command-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+  > pre {
+    padding: 1em 2.5em 1em 1em !important;
+  }
+}
+
+.copy-button {
+  position: absolute;
+  top: 15px;
+  right: 390px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    > svg {
+      color: #d4dbe2;
+    }
+  }
+
+  > svg {
+    /* margin-left: 10px; */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #a1aebc;
+  }
+}
