@@ -1,20 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import languageReducer from "../features/languageSlice";
 import rootSaga from "../sagas";
+import RootReducer from "../slice/RootReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
-  reducer: {
-    languages: languageReducer,
-  },
+  reducer: RootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);
 
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export default store;

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../app/store";
+import { RootState } from "../slice/RootReducer";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,7 @@ const Home: React.FC = () => {
   const languages = useSelector(
     (state: RootState) => state.languages.languages
   );
+
 
   const linkName = (language: string) => {
     return language.toLowerCase().replace(" ", "-");
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
       <section className="languages">
         <h2>Available Languages:</h2>
         <ul className="language-list">
-          {languages.map((language, index) => (
+          {languages.map((language: string, index: number) => (
             <li key={index} className="language-item">
               <Link to={`/${linkName(language)}`}>
                 <p>{language}</p>

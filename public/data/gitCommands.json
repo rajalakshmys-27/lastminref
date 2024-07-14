@@ -1,0 +1,164 @@
+{
+  "gitCommands": [
+    {
+      "topic": "Configuration",
+      "commands": [
+        {
+          "id": 1,
+          "description": "Set the global user name and email",
+          "command": "git config --global user.name \"Your Name\"\ngit config --global user.email \"you@example.com\""
+        }
+      ]
+    },
+    {
+      "topic": "Repository",
+      "commands": [
+        {
+          "id": 2,
+          "description": "Initialize a new Git repository",
+          "command": "git init"
+        },
+        {
+          "id": 3,
+          "description": "Clone a repository",
+          "command": "git clone https://github.com/username/repo.git"
+        }
+      ]
+    },
+    {
+      "topic": "Branching",
+      "commands": [
+        {
+          "id": 4,
+          "description": "Create a new branch",
+          "command": "git branch <branch_name>"
+        },
+        {
+          "id": 5,
+          "description": "Switch to an existing branch",
+          "command": "git checkout <branch_name>"
+        },
+        {
+          "id": 6,
+          "description": "Create and switch to a new branch",
+          "command": "git checkout -b <branch_name>"
+        },
+        {
+          "id": 7,
+          "description": "List all branches",
+          "command": "git branch"
+        },
+        {
+          "id": 8,
+          "description": "Delete a branch",
+          "command": "git branch -d <branch_name>"
+        }
+      ]
+    },
+    {
+      "topic": "Changes",
+      "commands": [
+        {
+          "id": 9,
+          "description": "Check the status of the repository",
+          "command": "git status"
+        },
+        {
+          "id": 10,
+          "description": "Add a specific file to the staging area",
+          "command": "git add <filename>"
+        },
+        {
+          "id": 11,
+          "description": "Add all changes to the staging area",
+          "command": "git add ."
+        },
+        {
+          "id": 12,
+          "description": "Commit changes with a message",
+          "command": "git commit -m \"Your commit message\""
+        }
+      ]
+    },
+    {
+      "topic": "Remote",
+      "commands": [
+        {
+          "id": 13,
+          "description": "Push changes to the remote repository",
+          "command": "git push origin <branch_name>"
+        },
+        {
+          "id": 14,
+          "description": "Pull the latest changes from the remote repository",
+          "command": "git pull origin <branch_name>"
+        }
+      ]
+    },
+    {
+      "topic": "Merging",
+      "commands": [
+        {
+          "id": 15,
+          "description": "Merge a branch into the current branch",
+          "command": "git merge <branch_name>"
+        }
+      ]
+    },
+    {
+      "topic": "Rebasing",
+      "commands": [
+        {
+          "id": 16,
+          "description": "Rebase the current branch onto another branch",
+          "command": "git rebase <branch_name>"
+        }
+      ]
+    },
+    {
+      "topic": "Undo Changes",
+      "commands": [
+        {
+          "id": 17,
+          "description": "Unstage a specific file",
+          "command": "git reset <filename>"
+        },
+        {
+          "id": 18,
+          "description": "Discard changes in a specific file",
+          "command": "git checkout -- <filename>"
+        },
+        {
+          "id": 19,
+          "description": "Revert a commit (create a new commit that undoes changes)",
+          "command": "git revert <commit_hash>"
+        },
+        {
+          "id": 20,
+          "description": "Reset to a specific commit (reset the HEAD to a previous commit)",
+          "command": "git reset --hard <commit_hash>"
+        }
+      ]
+    },
+    {
+      "topic": "History",
+      "commands": [
+        {
+          "id": 21,
+          "description": "Show the full commit history",
+          "command": "git log"
+        },
+        {
+          "id": 22,
+          "description": "Show commit history with one line per commit",
+          "command": "git log --oneline"
+        },
+        {
+          "id": 23,
+          "description": "Show changes in the commit history",
+          "command": "git log -p"
+        }
+      ]
+    }
+  ]
+}

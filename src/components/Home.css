@@ -1,15 +1,4 @@
 /* Home.css */
-body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(135deg, #1e1e1e 10%, #2c3e50 100%);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ecf0f1 !important;
-}
-
 .App {
   max-width: 800px;
   padding: 20px;

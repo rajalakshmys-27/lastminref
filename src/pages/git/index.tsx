@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
-import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "./git.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../slice/RootReducer";
+import { useDispatch } from "react-redux";
+import { gitCommandsDataRequest } from "../../slice/gitCommandSlice";
 
 const GitPage: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState<{ [key: number]: boolean }>(
     {}
   );
+
+  const gitCommandsData = useSelector(
+    (state: RootState) => state.gitCommands.gitCommandDetails
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(gitCommandsDataRequest());
+  }, [dispatch]);
+
+  console.log("gitCommandsData", gitCommandsData.gitCommands);
 
   const commands = [
     {
@@ -46,32 +61,39 @@ const GitPage: React.FC = () => {
           used to track changes in any set of files.
         </p>
       </div>
-      {commands.map((cmd, index) => (
+      {gitCommandsData.gitCommands?.map((item, index) => (
         <div key={index} style={{ marginBottom: "20px" }}>
-          <p>{cmd.description}</p>
-          <div className="command-container">
-            <SyntaxHighlighter language="bash" style={darcula}>
-              {cmd.command}
-            </SyntaxHighlighter>
-            <CopyToClipboard
-              text={cmd.command}
-              onCopy={() => handleCopy(index)}
-            >
-              <span className="copy-button">
-                <OverlayTrigger
-                  show={showTooltip[index]}
-                  placement="right"
-                  overlay={
-                    <Tooltip id={`button-tooltip-${index}`}>Copied!</Tooltip>
-                  }
+          <h4>{item.topic}</h4>
+          {item.commands?.map((cmd, index) => (
+            <>
+              <p>{cmd.description}</p>
+              <div className="command-container">
+                <SyntaxHighlighter language="bash" style={darcula}>
+                  {cmd.command}
+                </SyntaxHighlighter>
+                <CopyToClipboard
+                  text={cmd.command}
+                  onCopy={() => handleCopy(index)}
                 >
-                  <span>
-                    <FaCopy />
+                  <span className="copy-button">
+                    <OverlayTrigger
+                      show={showTooltip[index]}
+                      placement="right"
+                      overlay={
+                        <Tooltip id={`button-tooltip-${index}`}>
+                          Copied!
+                        </Tooltip>
+                      }
+                    >
+                      <span>
+                        <FaCopy />
+                      </span>
+                    </OverlayTrigger>
                   </span>
-                </OverlayTrigger>
-              </span>
-            </CopyToClipboard>
-          </div>
+                </CopyToClipboard>
+              </div>
+            </>
+          ))}
         </div>
       ))}
     </div>
