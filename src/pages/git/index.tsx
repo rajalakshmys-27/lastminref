@@ -12,10 +12,7 @@ import { useDispatch } from "react-redux";
 import { gitCommandsDataRequest } from "../../slice/gitCommandSlice";
 
 const GitPage: React.FC = () => {
-  const [showTooltip, setShowTooltip] = useState<{ [key: number]: boolean }>(
-    {}
-  );
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<{ [key: number]: boolean }>({});
 
   const gitCommandsData = useSelector(
     (state: RootState) => state.gitCommands.gitCommandDetails
@@ -28,11 +25,9 @@ const GitPage: React.FC = () => {
   }, [dispatch]);
 
   const handleCopy = (index: number) => {
-    setCopied(true);
-    setShowTooltip((prevState) => ({ ...prevState, [index]: true }));
+    setCopied((prevState) => ({ ...prevState, [index]: true }));
     setTimeout(() => {
-      setCopied(false);
-      setShowTooltip((prevState) => ({ ...prevState, [index]: false }));
+      setCopied((prevState) => ({ ...prevState, [index]: false }));
     }, 2000);
   };
 
@@ -61,44 +56,32 @@ const GitPage: React.FC = () => {
                     onCopy={() => handleCopy(index)}
                   >
                     <span className="copy-button">
-                      <OverlayTrigger
-                        show={showTooltip[index]}
-                        placement="right"
-                        overlay={
-                          <Tooltip id={`button-tooltip-${index}`}>
-                            Copied!
-                          </Tooltip>
-                        }
-                      >
-                        <span>
-                          {copied ? (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-check2"
-                              viewBox="0 0 16 16"
-                            >
-                              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
-                            </svg>
-                          ) : (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              className="bi bi-copy"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
-                              />
-                            </svg>
-                          )}
-                        </span>
-                      </OverlayTrigger>
+                      {copied[index] ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-check2"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-copy"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+                          />
+                        </svg>
+                      )}
                     </span>
                   </CopyToClipboard>
                 </div>

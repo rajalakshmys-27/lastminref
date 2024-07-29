@@ -34,7 +34,7 @@ body {
 
 .command-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   background-color: #15252c;
@@ -43,26 +43,16 @@ body {
   > pre {
     padding: 0 !important;
     margin: 0 !important;
+    background: none !important;
   }
 }
 
 .copy-button {
-  background: none;
-  border: none;
+  background: #0f1c22;
   cursor: pointer;
-
-  &:hover {
-    > svg {
-      color: #d4dbe2;
-    }
-  }
-
-  > svg {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #a1aebc;
-  }
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: rgb(15, 28, 34) 0px 19px 16px;
 }
 
 /* Responsive Styles */
@@ -81,13 +71,6 @@ body {
   }
   .cheatsheet-container {
     grid-template-columns: repeat(1, calc((100% - 24px)));
-  }
-}
-
-@media (max-width: 768px) {
-  .copy-button > svg {
-    width: 20px;
-    height: 20px;
   }
 }
 
