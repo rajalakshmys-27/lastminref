@@ -15,6 +15,7 @@ const GitPage: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState<{ [key: number]: boolean }>(
     {}
   );
+  const [copied, setCopied] = useState(false);
 
   const gitCommandsData = useSelector(
     (state: RootState) => state.gitCommands.gitCommandDetails
@@ -26,76 +27,86 @@ const GitPage: React.FC = () => {
     dispatch(gitCommandsDataRequest());
   }, [dispatch]);
 
-  console.log("gitCommandsData", gitCommandsData.gitCommands);
-
-  const commands = [
-    {
-      description: "Pull the latest changes from the remote repository",
-      command: "git pull origin <branch_name>",
-    },
-    {
-      description: "Push your changes to the remote repository",
-      command: "git push origin <branch_name>",
-    },
-  ];
-
   const handleCopy = (index: number) => {
+    setCopied(true);
     setShowTooltip((prevState) => ({ ...prevState, [index]: true }));
     setTimeout(() => {
+      setCopied(false);
       setShowTooltip((prevState) => ({ ...prevState, [index]: false }));
-    }, 900);
+    }, 2000);
   };
 
   return (
     <div className="git-page">
-      <div>
-        <h1>Git</h1>
-      </div>
-      <div>
+      <div className="heading-container">
+        <h1>Git Cheatsheet</h1>
         <p>
-          Git is a distributed version control system for tracking changes in
-          source code during software development.
-        </p>
-        <p>
-          It is designed for coordinating work among programmers, but it can be
-          used to track changes in any set of files.
+          Discover essential Git commands and tips in our concise cheatsheet,
+          perfect for streamlining your version control workflow.
         </p>
       </div>
-      {gitCommandsData.gitCommands?.map((item, index) => (
-        <div key={index} style={{ marginBottom: "20px" }}>
-          <h4>{item.topic}</h4>
-          {item.commands?.map((cmd, index) => (
-            <>
-              <p>{cmd.description}</p>
-              <div className="command-container">
-                <SyntaxHighlighter language="bash" style={darcula}>
-                  {cmd.command}
-                </SyntaxHighlighter>
-                <CopyToClipboard
-                  text={cmd.command}
-                  onCopy={() => handleCopy(index)}
-                >
-                  <span className="copy-button">
-                    <OverlayTrigger
-                      show={showTooltip[index]}
-                      placement="right"
-                      overlay={
-                        <Tooltip id={`button-tooltip-${index}`}>
-                          Copied!
-                        </Tooltip>
-                      }
-                    >
-                      <span>
-                        <FaCopy />
-                      </span>
-                    </OverlayTrigger>
-                  </span>
-                </CopyToClipboard>
-              </div>
-            </>
-          ))}
-        </div>
-      ))}
+      <div className="cheatsheet-container">
+        {gitCommandsData.gitCommands?.map((item, index) => (
+          <div key={index} className="command-wrapper">
+            <h4>{item.topic}</h4>
+            {item.commands?.map((cmd, index) => (
+              <>
+                <p>{cmd.description}</p>
+                <div className="command-container">
+                  <SyntaxHighlighter language="bash" style={darcula}>
+                    {cmd.command}
+                  </SyntaxHighlighter>
+                  <CopyToClipboard
+                    text={cmd.command}
+                    onCopy={() => handleCopy(index)}
+                  >
+                    <span className="copy-button">
+                      <OverlayTrigger
+                        show={showTooltip[index]}
+                        placement="right"
+                        overlay={
+                          <Tooltip id={`button-tooltip-${index}`}>
+                            Copied!
+                          </Tooltip>
+                        }
+                      >
+                        <span>
+                          {copied ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              className="bi bi-check2"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0" />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              className="bi bi-copy"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+                              />
+                            </svg>
+                          )}
+                        </span>
+                      </OverlayTrigger>
+                    </span>
+                  </CopyToClipboard>
+                </div>
+              </>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -5,8 +5,23 @@
       "commands": [
         {
           "id": 1,
-          "description": "Set the global user name and email",
-          "command": "git config --global user.name \"Your Name\"\ngit config --global user.email \"you@example.com\""
+          "description": "Set username",
+          "command": "git config --global user.name \"Your Name\""
+        },
+        {
+          "id": 2,
+          "description": "Set email",
+          "command": "git config --global user.email \"you@example.com\""
+        },
+        {
+          "id": 3,
+          "description": "Set default editor",
+          "command": "git config --global core.editor \"editor\""
+        },
+        {
+          "id": 4,
+          "description": "List all configs",
+          "command": "git config --list"
         }
       ]
     },
@@ -14,14 +29,14 @@
       "topic": "Repository",
       "commands": [
         {
-          "id": 2,
-          "description": "Initialize a new Git repository",
+          "id": 5,
+          "description": "Initialize repository",
           "command": "git init"
         },
         {
-          "id": 3,
-          "description": "Clone a repository",
-          "command": "git clone https://github.com/username/repo.git"
+          "id": 6,
+          "description": "Clone repository",
+          "command": "git clone <repo>"
         }
       ]
     },
@@ -29,29 +44,29 @@
       "topic": "Branching",
       "commands": [
         {
-          "id": 4,
-          "description": "Create a new branch",
-          "command": "git branch <branch_name>"
-        },
-        {
-          "id": 5,
-          "description": "Switch to an existing branch",
-          "command": "git checkout <branch_name>"
-        },
-        {
-          "id": 6,
-          "description": "Create and switch to a new branch",
-          "command": "git checkout -b <branch_name>"
-        },
-        {
           "id": 7,
-          "description": "List all branches",
+          "description": "List branches",
           "command": "git branch"
         },
         {
           "id": 8,
-          "description": "Delete a branch",
-          "command": "git branch -d <branch_name>"
+          "description": "Create branch",
+          "command": "git branch <name>"
+        },
+        {
+          "id": 9,
+          "description": "Switch branch",
+          "command": "git checkout <name>"
+        },
+        {
+          "id": 10,
+          "description": "Create and switch branch",
+          "command": "git checkout -b <name>"
+        },
+        {
+          "id": 11,
+          "description": "Delete branch",
+          "command": "git branch -d <name>"
         }
       ]
     },
@@ -59,24 +74,29 @@
       "topic": "Changes",
       "commands": [
         {
-          "id": 9,
-          "description": "Check the status of the repository",
+          "id": 12,
+          "description": "Show status",
           "command": "git status"
         },
         {
-          "id": 10,
-          "description": "Add a specific file to the staging area",
-          "command": "git add <filename>"
+          "id": 13,
+          "description": "Stage file",
+          "command": "git add <file>"
         },
         {
-          "id": 11,
-          "description": "Add all changes to the staging area",
+          "id": 14,
+          "description": "Stage all changes",
           "command": "git add ."
         },
         {
-          "id": 12,
-          "description": "Commit changes with a message",
-          "command": "git commit -m \"Your commit message\""
+          "id": 15,
+          "description": "Commit with message",
+          "command": "git commit -m \"message\""
+        },
+        {
+          "id": 16,
+          "description": "Amend last commit",
+          "command": "git commit --amend"
         }
       ]
     },
@@ -84,59 +104,64 @@
       "topic": "Remote",
       "commands": [
         {
-          "id": 13,
-          "description": "Push changes to the remote repository",
-          "command": "git push origin <branch_name>"
-        },
-        {
-          "id": 14,
-          "description": "Pull the latest changes from the remote repository",
-          "command": "git pull origin <branch_name>"
-        }
-      ]
-    },
-    {
-      "topic": "Merging",
-      "commands": [
-        {
-          "id": 15,
-          "description": "Merge a branch into the current branch",
-          "command": "git merge <branch_name>"
-        }
-      ]
-    },
-    {
-      "topic": "Rebasing",
-      "commands": [
-        {
-          "id": 16,
-          "description": "Rebase the current branch onto another branch",
-          "command": "git rebase <branch_name>"
-        }
-      ]
-    },
-    {
-      "topic": "Undo Changes",
-      "commands": [
-        {
           "id": 17,
-          "description": "Unstage a specific file",
-          "command": "git reset <filename>"
+          "description": "List remotes",
+          "command": "git remote"
         },
         {
           "id": 18,
-          "description": "Discard changes in a specific file",
-          "command": "git checkout -- <filename>"
+          "description": "Add remote",
+          "command": "git remote add <name> <url>"
         },
         {
           "id": 19,
-          "description": "Revert a commit (create a new commit that undoes changes)",
-          "command": "git revert <commit_hash>"
+          "description": "Remove remote",
+          "command": "git remote remove <name>"
         },
         {
           "id": 20,
-          "description": "Reset to a specific commit (reset the HEAD to a previous commit)",
-          "command": "git reset --hard <commit_hash>"
+          "description": "Fetch from remote",
+          "command": "git fetch <remote>"
+        },
+        {
+          "id": 21,
+          "description": "Pull from remote",
+          "command": "git pull <remote>"
+        },
+        {
+          "id": 22,
+          "description": "Push to remote",
+          "command": "git push <remote> <branch>"
+        }
+      ]
+    },
+    {
+      "topic": "Stashing",
+      "commands": [
+        {
+          "id": 23,
+          "description": "Stash changes",
+          "command": "git stash"
+        },
+        {
+          "id": 24,
+          "description": "List stashes",
+          "command": "git stash list"
+        },
+        {
+          "id": 25,
+          "description": "Apply stash",
+          "command": "git stash apply"
+        },
+        {
+          "id": 26,
+          "description": "Apply and drop stash",
+          "command": "git stash pop"
+        },
+        {
+          "id": 27,
+          "description": "Drop stash",
+          "command": "git stash drop"
         }
       ]
     },
@@ -144,19 +169,169 @@
       "topic": "History",
       "commands": [
         {
-          "id": 21,
-          "description": "Show the full commit history",
+          "id": 28,
+          "description": "Show commit history",
           "command": "git log"
         },
         {
-          "id": 22,
-          "description": "Show commit history with one line per commit",
+          "id": 29,
+          "description": "Condensed log",
           "command": "git log --oneline"
         },
         {
-          "id": 23,
-          "description": "Show changes in the commit history",
-          "command": "git log -p"
+          "id": 30,
+          "description": "Graph log",
+          "command": "git log --graph"
+        },
+        {
+          "id": 31,
+          "description": "Show commit details",
+          "command": "git show <commit>"
+        }
+      ]
+    },
+    {
+      "topic": "Differences",
+      "commands": [
+        {
+          "id": 32,
+          "description": "Show changes",
+          "command": "git diff"
+        },
+        {
+          "id": 33,
+          "description": "Show staged changes",
+          "command": "git diff --staged"
+        }
+      ]
+    },
+    {
+      "topic": "Cleaning",
+      "commands": [
+        {
+          "id": 34,
+          "description": "Remove untracked files",
+          "command": "git clean -f"
+        }
+      ]
+    },
+    {
+      "topic": "Tagging",
+      "commands": [
+        {
+          "id": 35,
+          "description": "List tags",
+          "command": "git tag"
+        },
+        {
+          "id": 36,
+          "description": "Create tag",
+          "command": "git tag <name>"
+        },
+        {
+          "id": 37,
+          "description": "Push tag",
+          "command": "git push <remote> <tag>"
+        },
+        {
+          "id": 38,
+          "description": "Delete tag",
+          "command": "git tag -d <name>"
+        },
+        {
+          "id": 39,
+          "description": "Delete tag from remote",
+          "command": "git push <remote> --delete <name>"
+        }
+      ]
+    },
+    {
+      "topic": "Cherry-pick",
+      "commands": [
+        {
+          "id": 40,
+          "description": "Apply commit",
+          "command": "git cherry-pick <commit>"
+        }
+      ]
+    },
+    {
+      "topic": "Reflog",
+      "commands": [
+        {
+          "id": 41,
+          "description": "Show HEAD log",
+          "command": "git reflog"
+        }
+      ]
+    },
+    {
+      "topic": "Bisect",
+      "commands": [
+        {
+          "id": 42,
+          "description": "Start binary search",
+          "command": "git bisect start"
+        }
+      ]
+    },
+    {
+      "topic": "Submodules",
+      "commands": [
+        {
+          "id": 43,
+          "description": "Add submodule",
+          "command": "git submodule add <repo> <path>"
+        },
+        {
+          "id": 44,
+          "description": "Init/update submodules",
+          "command": "git submodule update --init --recursive"
+        }
+      ]
+    },
+    {
+      "topic": "Archive",
+      "commands": [
+        {
+          "id": 45,
+          "description": "Zip branch",
+          "command": "git archive --format=zip --output=<file.zip> <branch>"
+        }
+      ]
+    },
+    {
+      "topic": "Blame",
+      "commands": [
+        {
+          "id": 46,
+          "description": "Show file history",
+          "command": "git blame <file>"
+        }
+      ]
+    },
+    {
+      "topic": "Miscellaneous",
+      "commands": [
+        {
+          "id": 47,
+          "description": "Show HEAD log",
+          "command": "git reflog"
+        },
+        {
+          "id": 48,
+          "description": "Show commit details",
+          "command": "git show <commit>"
+        },
+        {
+          "id": 49,
+          "description": "Apply commit",
+          "command": "git cherry-pick <commit>"
+        },
+        {
+          "id": 50,
+          "description": "Start binary search",
+          "command": "git bisect start"
         }
       ]
     }
