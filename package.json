@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-copy-to-clipboard": "^5.0.7"
+    "@types/react-copy-to-clipboard": "^5.0.7",
+    "sass": "^1.77.8"
   }
 }

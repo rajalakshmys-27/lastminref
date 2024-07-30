@@ -1,11 +1,8 @@
-body {
-  margin: 150px 50px !important;
-  display: block !important;
-}
 .git-page {
   display: flex;
   flex-direction: column;
   gap: 100px;
+  align-items: center;
 }
 
 .heading-container {
@@ -17,7 +14,6 @@ body {
 
 .cheatsheet-container {
   display: grid;
-  grid-template-columns: repeat(3, calc((100% - 100px) / 3));
   gap: 50px;
   box-sizing: border-box;
 }
@@ -55,30 +51,43 @@ body {
   box-shadow: rgb(15, 28, 34) 0px 19px 16px;
 }
 
-/* Responsive Styles */
-@media (max-width: 1200px) {
-  .body {
-    margin: 150px 25px !important;
+@media (min-width: 1301px) {
+  body {
+    margin: 150px 50px !important;
+    display: block !important;
+  }
+  .git-page {
+    max-width: calc(100vw - 100px);
   }
   .cheatsheet-container {
-    grid-template-columns: repeat(2, calc((100% - 50px) / 2));
+    grid-template-columns: repeat(3, calc((100vw - 200px) / 3));
+    justify-content: center;
+  }
+}
+
+/* Responsive Styles */
+@media (min-width: 993px) and (max-width: 1300px) {
+  body {
+    margin: 150px 25px !important;
+  }
+  .git-page {
+    max-width: calc(100vw - 50px);
+  }
+  .cheatsheet-container {
+    grid-template-columns: repeat(2, calc((100vw - 100px) / 2));
+    justify-content: center;
   }
 }
 
 @media (max-width: 992px) {
-  .body {
-    margin: 150px 12px !important;
+  body {
+    margin: 150px 20px !important;
+  }
+  .git-page {
+    max-width: calc(100vw - 40px);
   }
   .cheatsheet-container {
-    grid-template-columns: repeat(1, calc((100% - 24px)));
-  }
-}
-
-@media (max-width: 480px) {
-  .command-container {
-    > pre {
-      font-size: 14px; /* Smaller text for mobile */
-      padding: 0.5em 1.5em;
-    }
+    grid-template-columns: calc(100vw - 40px);
+    justify-content: center;
   }
 }

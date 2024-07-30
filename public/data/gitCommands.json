@@ -1,6 +1,7 @@
 {
   "gitCommands": [
     {
+      "id": 111,
       "topic": "Configuration",
       "commands": [
         {
@@ -26,6 +27,7 @@
       ]
     },
     {
+      "id": 112,
       "topic": "Repository",
       "commands": [
         {
@@ -41,6 +43,7 @@
       ]
     },
     {
+      "id": 113,
       "topic": "Branching",
       "commands": [
         {
@@ -71,6 +74,7 @@
       ]
     },
     {
+      "id": 114,
       "topic": "Changes",
       "commands": [
         {
@@ -101,6 +105,7 @@
       ]
     },
     {
+      "id": 115,
       "topic": "Remote",
       "commands": [
         {
@@ -136,6 +141,7 @@
       ]
     },
     {
+      "id": 116,
       "topic": "Stashing",
       "commands": [
         {
@@ -166,6 +172,7 @@
       ]
     },
     {
+      "id": 117,
       "topic": "History",
       "commands": [
         {
@@ -191,6 +198,7 @@
       ]
     },
     {
+      "id": 118,
       "topic": "Differences",
       "commands": [
         {
@@ -206,6 +214,7 @@
       ]
     },
     {
+      "id": 119,
       "topic": "Cleaning",
       "commands": [
         {
@@ -216,6 +225,7 @@
       ]
     },
     {
+      "id": 120,
       "topic": "Tagging",
       "commands": [
         {
@@ -246,6 +256,7 @@
       ]
     },
     {
+      "id": 121,
       "topic": "Cherry-pick",
       "commands": [
         {
@@ -256,6 +267,7 @@
       ]
     },
     {
+      "id": 122,
       "topic": "Reflog",
       "commands": [
         {
@@ -266,6 +278,7 @@
       ]
     },
     {
+      "id": 123,
       "topic": "Bisect",
       "commands": [
         {
@@ -276,6 +289,7 @@
       ]
     },
     {
+      "id": 124,
       "topic": "Submodules",
       "commands": [
         {
@@ -291,6 +305,7 @@
       ]
     },
     {
+      "id": 125,
       "topic": "Archive",
       "commands": [
         {
@@ -301,6 +316,7 @@
       ]
     },
     {
+      "id": 126,
       "topic": "Blame",
       "commands": [
         {
@@ -311,6 +327,7 @@
       ]
     },
     {
+      "id": 127,
       "topic": "Miscellaneous",
       "commands": [
         {
