@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
-import styles from "./flexbox.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import React, { Fragment, useState } from "react";
+import styles from "./flexgrid.module.scss";
+import { useSelector } from "react-redux";
 import { RootState } from "../../slice/RootReducer";
 import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { cssCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
 import {
   FlexBoxCheatSheet,
   FlexGridData,
@@ -26,7 +25,7 @@ function isGridCheatSheet(
   return (data as GridCheatSheet).gridData !== undefined;
 }
 
-const FlexBoxContent = ({ selectedTopic }: any) => {
+const FlexGridContent = ({ selectedTopic }: any) => {
   const [copied, setCopied] = useState<{ [key: number]: boolean }>({});
 
   const cssCheatSheetData: FlexBoxCheatSheet | GridCheatSheet = useSelector(
@@ -47,12 +46,6 @@ const FlexBoxContent = ({ selectedTopic }: any) => {
 
   const isDesktopView = useScreenSize().deviceSize.width > 991;
 
-  //   const dispatch = useDispatch();
-
-  //   useEffect(() => {
-  //     dispatch(cssCheatSheetDataRequest());
-  //   }, [dispatch]);
-
   const handleCopy = (index: number) => {
     setCopied((prevState) => ({ ...prevState, [index]: true }));
     setTimeout(() => {
@@ -62,7 +55,7 @@ const FlexBoxContent = ({ selectedTopic }: any) => {
 
   const gridItem = (item: FlexGridData, index: number) => {
     return (
-      <div key={index} className={styles["flexbox-content"]}>
+      <div key={index} className={styles["flexgrid-content"]}>
         <h4 className={styles["topic"]}>{item.topic}</h4>
         {item.commands?.map((cmd) => (
           <Fragment key={cmd.id}>
@@ -119,7 +112,7 @@ const FlexBoxContent = ({ selectedTopic }: any) => {
   };
 
   return (
-    <div className={styles["flexbox-wrapper"]}>
+    <div className={styles["flexgrid-wrapper"]}>
       {isDesktopView ? (
         <>
           <div style={{ gridColumn: 1 }}>
@@ -136,4 +129,4 @@ const FlexBoxContent = ({ selectedTopic }: any) => {
   );
 };
 
-export default FlexBoxContent;
+export default FlexGridContent;

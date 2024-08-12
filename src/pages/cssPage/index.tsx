@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./cssPage.module.scss";
-import FlexBoxContent from "../../components/flexbox";
+import FlexGridContent from "../../components/flexgrid";
 import { useDispatch } from "react-redux";
 import { cssCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
-
-export const GridContent = () => (
-  <div>
-    <h2>Grid</h2>
-    <p>CSS Grid is a two-dimensional layout system...</p>
-    {/* Add more content here */}
-  </div>
-);
 
 const CSSPage = () => {
   const [selectedTopic, setSelectedTopic] = useState("");
@@ -81,7 +73,7 @@ const CSSPage = () => {
         </div>
         <div className={styles["content"]}>
           {selectedTopic !== "" && (
-            <FlexBoxContent selectedTopic={selectedTopic} />
+            <FlexGridContent selectedTopic={selectedTopic} />
           )}
         </div>
       </div>
