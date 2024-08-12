@@ -1,22 +1,31 @@
 import axios from "axios";
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
-  flexCheatSheetDataRequest,
-  getFlexCheatSheetDataSuccess,
-  getFlexCheatSheetDataFailure,
+  cssCheatSheetDataRequest,
+  getCSSCheatSheetDataSuccess,
+  getCSSCheatSheetDataFailure,
 } from "../slice/cssCheatSheetSlice";
+import { PayloadAction } from "@reduxjs/toolkit";
 
-const API_URL = "./data/flexboxData.json";
+const FLEX_BOX_API_URL = "./data/flexboxData.json";
+const GRID_API_URL = "./data/gridData.json";
 
-function* getFlexCheatSheetData(): any {
+function* getCSSCheatSheetData(action: PayloadAction<any>): any {
   try {
+    let API_URL = "";
+    if (action.payload.selectedTopic === "flexbox") {
+      API_URL = FLEX_BOX_API_URL;
+    }
+    if (action.payload.selectedTopic === "grid") {
+      API_URL = GRID_API_URL;
+    }
     const response: any = yield call(axios.get, API_URL, { baseURL: "/" });
-    yield put(getFlexCheatSheetDataSuccess(response.data));
+    yield put(getCSSCheatSheetDataSuccess(response.data));
   } catch (error: any) {
-    yield put(getFlexCheatSheetDataFailure(error.message));
+    yield put(getCSSCheatSheetDataFailure(error.message));
   }
 }
 
-export function* watchFlexCheatSheetData(): any {
-  yield takeLatest(flexCheatSheetDataRequest.type, getFlexCheatSheetData);
+export function* watchCSSCheatSheetData(): any {
+  yield takeLatest(cssCheatSheetDataRequest.type, getCSSCheatSheetData);
 }

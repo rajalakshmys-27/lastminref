@@ -5,31 +5,53 @@ import { RootState } from "../../slice/RootReducer";
 import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { flexCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
-import { FlexboxData } from "../../models/models";
+import { cssCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
+import {
+  FlexBoxCheatSheet,
+  FlexGridData,
+  GridCheatSheet,
+} from "../../models/models";
 import useScreenSize from "../../utils/hook/useScreenSize";
 
-const FlexBoxContent = () => {
+// Type guards to determine which type the data is
+function isFlexBoxCheatSheet(
+  data: FlexBoxCheatSheet | GridCheatSheet
+): data is FlexBoxCheatSheet {
+  return (data as FlexBoxCheatSheet).flexboxData !== undefined;
+}
+
+function isGridCheatSheet(
+  data: FlexBoxCheatSheet | GridCheatSheet
+): data is GridCheatSheet {
+  return (data as GridCheatSheet).gridData !== undefined;
+}
+
+const FlexBoxContent = ({ selectedTopic }: any) => {
   const [copied, setCopied] = useState<{ [key: number]: boolean }>({});
 
-  const cssCheatSheetData = useSelector(
+  const cssCheatSheetData: FlexBoxCheatSheet | GridCheatSheet = useSelector(
     (state: RootState) => state.cssCheatSheet.cssCheatSheetDetails
   );
 
-  const oddItems = cssCheatSheetData?.flexboxData?.filter(
-    (_, index) => index % 2 === 0
-  );
-  const evenItems = cssCheatSheetData?.flexboxData?.filter(
-    (_, index) => index % 2 !== 0
-  );
+  const data =
+    selectedTopic === "flexbox"
+      ? isFlexBoxCheatSheet(cssCheatSheetData)
+        ? cssCheatSheetData.flexboxData
+        : []
+      : isGridCheatSheet(cssCheatSheetData)
+      ? cssCheatSheetData.gridData
+      : [];
+
+  const oddItems = data?.filter((_: any, index: number) => index % 2 === 0);
+  const evenItems = data?.filter((_: any, index: number) => index % 2 !== 0);
 
   const isDesktopView = useScreenSize().deviceSize.width > 991;
 
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(flexCheatSheetDataRequest());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(cssCheatSheetDataRequest());
+  //   }, [dispatch]);
 
   const handleCopy = (index: number) => {
     setCopied((prevState) => ({ ...prevState, [index]: true }));
@@ -38,7 +60,7 @@ const FlexBoxContent = () => {
     }, 2000);
   };
 
-  const gridItem = (item: FlexboxData, index: number) => {
+  const gridItem = (item: FlexGridData, index: number) => {
     return (
       <div key={index} className={styles["flexbox-content"]}>
         <h4 className={styles["topic"]}>{item.topic}</h4>
@@ -81,7 +103,7 @@ const FlexBoxContent = () => {
                         viewBox="0 0 16 16"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
                         />
                       </svg>
@@ -108,11 +130,7 @@ const FlexBoxContent = () => {
           </div>
         </>
       ) : (
-        <>
-          {cssCheatSheetData?.flexboxData?.map((item, index) =>
-            gridItem(item, index)
-          )}
-        </>
+        <>{data?.map((item, index) => gridItem(item, index))}</>
       )}
     </div>
   );

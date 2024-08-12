@@ -19,7 +19,7 @@ export interface GitCheatSheetState {
   error: string;
 }
 
-export interface FlexBoxCodeSnippet {
+export interface FlexGridCodeSnippet {
   id: number;
   heading: string;
   values?: string;
@@ -27,16 +27,20 @@ export interface FlexBoxCodeSnippet {
   command?: string;
 }
 
-export interface FlexboxData {
+export interface FlexGridData {
   topic: string;
-  commands: FlexBoxCodeSnippet[];
+  commands: FlexGridCodeSnippet[];
 }
-export interface FlexboxCheatSheet {
-  flexboxData: FlexboxData[];
+export interface FlexBoxCheatSheet {
+  flexboxData: FlexGridData[];
+}
+
+export interface GridCheatSheet {
+  gridData: FlexGridData[];
 }
 
 export interface CSSCheatSheetState {
-  cssCheatSheetDetails: FlexboxCheatSheet;
+  cssCheatSheetDetails: FlexBoxCheatSheet | GridCheatSheet;
   isLoading: boolean;
   hasData: boolean;
   error: string;
