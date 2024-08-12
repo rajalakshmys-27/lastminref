@@ -4,6 +4,8 @@ const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
+    orientation:
+      window.innerWidth > window.innerHeight ? "landscape" : "portrait",
   });
 
   useEffect(() => {
@@ -11,20 +13,22 @@ const useScreenSize = () => {
       setScreenSize({
         width: window.innerWidth,
         height: window.innerHeight,
+        orientation:
+          window.innerWidth > window.innerHeight ? "landscape" : "portrait",
       });
     };
     window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
     };
   }, []);
 
   const getDevice = (size: any) => {
-    if (size.width <= 480) {
+    if (size.width <= 992) {
       return "mobile";
-    } else if (size.width > 480 && size.width <= 767) {
-      return "tablet";
     } else return "desktop";
   };
 
