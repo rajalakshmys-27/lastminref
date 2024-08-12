@@ -7,6 +7,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { flexCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
 import { FlexboxData } from "../../models/models";
+import useScreenSize from "../../utils/hook/useScreenSize";
 
 const FlexBoxContent = () => {
   const [copied, setCopied] = useState<{ [key: number]: boolean }>({});
@@ -21,6 +22,8 @@ const FlexBoxContent = () => {
   const evenItems = cssCheatSheetData?.flexboxData?.filter(
     (_, index) => index % 2 !== 0
   );
+
+  const isDesktopView = useScreenSize().deviceSize.width > 991;
 
   const dispatch = useDispatch();
 
@@ -95,12 +98,22 @@ const FlexBoxContent = () => {
 
   return (
     <div className={styles["flexbox-wrapper"]}>
-      <div style={{ gridColumn: 1 }}>
-        {oddItems?.map((item, index) => gridItem(item, index))}
-      </div>
-      <div style={{ gridColumn: 2 }}>
-        {evenItems?.map((item, index) => gridItem(item, index))}
-      </div>
+      {isDesktopView ? (
+        <>
+          <div style={{ gridColumn: 1 }}>
+            {oddItems?.map((item, index) => gridItem(item, index))}
+          </div>
+          <div style={{ gridColumn: 2 }}>
+            {evenItems?.map((item, index) => gridItem(item, index))}
+          </div>
+        </>
+      ) : (
+        <>
+          {cssCheatSheetData?.flexboxData?.map((item, index) =>
+            gridItem(item, index)
+          )}
+        </>
+      )}
     </div>
   );
 };
