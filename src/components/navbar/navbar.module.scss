@@ -1,0 +1,52 @@
+.navbar {
+  background-color: #1e1e1e;
+  padding: 15px !important;
+  margin-bottom: 16px;
+
+  & :global {
+    .container-fluid {
+      justify-content: center !important;
+      @media (max-width: 992px) {
+        justify-content: space-between !important;
+      }
+      > .offcanvas {
+        > .offcanvas-body {
+          justify-content: space-around !important;
+          > .navbar-nav:first-child {
+            justify-content: space-evenly;
+            flex-grow: 1;
+          }
+          > .navbar-nav:last-child {
+            justify-content: center;
+            flex-grow: 1;
+            gap: 20px;
+          }
+        }
+      }
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+
+.custom-header {
+  & :global {
+    .btn-close {
+      filter: invert(1) !important;
+    }
+  }
+}
+
+.custom-body {
+  color: #909294 !important;
+}
+
+:global {
+  .offcanvas {
+    top: 0 !important;
+    height: 100vh !important;
+  }
+}

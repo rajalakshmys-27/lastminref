@@ -1,4 +1,4 @@
-export interface Command {
+export interface GitCodeSnippet {
   id: number;
   description: string;
   command: string;
@@ -6,14 +6,37 @@ export interface Command {
 
 export interface GitCommand {
   topic: string;
-  commands: Command[];
+  commands: GitCodeSnippet[];
 }
-export interface GitCommands {
+export interface GitCheatSheet {
   gitCommands: GitCommand[];
 }
 
-export interface GitCommandState {
-  gitCommandDetails: GitCommands;
+export interface GitCheatSheetState {
+  gitCheatSheetDetails: GitCheatSheet;
+  isLoading: boolean;
+  hasData: boolean;
+  error: string;
+}
+
+export interface FlexBoxCodeSnippet {
+  id: number;
+  heading: string;
+  values?: string;
+  description: string;
+  command?: string;
+}
+
+export interface FlexboxData {
+  topic: string;
+  commands: FlexBoxCodeSnippet[];
+}
+export interface FlexboxCheatSheet {
+  flexboxData: FlexboxData[];
+}
+
+export interface CSSCheatSheetState {
+  cssCheatSheetDetails: FlexboxCheatSheet;
   isLoading: boolean;
   hasData: boolean;
   error: string;

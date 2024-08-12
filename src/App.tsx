@@ -1,15 +1,23 @@
 import React from "react";
-import Home from "./components/Home";
-import "./App.css";
+import Home from "./pages/homePage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import GitPage from "./pages/git";
+import RootLayout from "./pages";
+import GitPage from "./pages/gitPage";
+import CSSPage from "./pages/cssPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      { path: "/git", element: <GitPage /> },
+      { path: "/css", element: <CSSPage /> },
+    ],
   },
-  { path: "/git", element: <GitPage /> },
 ]);
 
 const App: React.FC = () => {

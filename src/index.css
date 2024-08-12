@@ -1,9 +1,6 @@
 body {
   font-family: "Roboto", sans-serif !important;
   background: linear-gradient(135deg, #1e1e1e, #2c3e50, #334354, #14212d) !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
   color: #ecf0f1 !important;
   min-height: 100vh !important;
 }

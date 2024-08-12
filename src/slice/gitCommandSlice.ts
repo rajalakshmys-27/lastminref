@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GitCommands, GitCommandState } from "../models/models";
+import { GitCheatSheet, GitCheatSheetState } from "../models/models";
 
-const initialState: GitCommandState = {
-  gitCommandDetails: {} as GitCommands,
+const initialState: GitCheatSheetState = {
+  gitCheatSheetDetails: {} as GitCheatSheet,
   isLoading: false,
   hasData: false,
   error: "",
@@ -19,7 +19,7 @@ const gitCommandSlice = createSlice({
       state.isLoading = false;
       state.hasData = true;
       state.error = "";
-      state.gitCommandDetails = action.payload;
+      state.gitCheatSheetDetails = action.payload;
     },
     getGitCommandsDataFailure: (state: any, action: PayloadAction<any>) => {
       state.isLoading = false;

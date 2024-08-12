@@ -1,26 +1,23 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
-import { useSelector } from "react-redux";
+import styles from "./flexbox.module.scss";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../slice/RootReducer";
-import { useDispatch } from "react-redux";
-import { gitCommandsDataRequest } from "../../slice/gitCommandSlice";
+import CopyToClipboard from "react-copy-to-clipboard";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { flexCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
 
-import styles from "./git.module.scss";
-
-const GitPage: React.FC = () => {
+const FlexBoxContent = () => {
   const [copied, setCopied] = useState<{ [key: number]: boolean }>({});
 
-  const gitCommandsData = useSelector(
-    (state: RootState) => state.gitCommands.gitCommandDetails
+  const cssCheatSheetData = useSelector(
+    (state: RootState) => state.cssCheatSheet.cssCheatSheetDetails
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(gitCommandsDataRequest());
+    dispatch(flexCheatSheetDataRequest());
   }, [dispatch]);
 
   const handleCopy = (index: number) => {
@@ -31,21 +28,23 @@ const GitPage: React.FC = () => {
   };
 
   return (
-    <div className={styles["git-page"]}>
-      <div className={styles["heading-container"]}>
-        <h1>Git Cheatsheet</h1>
-        <p>
-          Discover essential Git commands and tips in our concise cheatsheet,
-          perfect for streamlining your version control workflow.
-        </p>
-      </div>
-      <div className={styles["cheatsheet-container"]}>
-        {gitCommandsData.gitCommands?.map((item, index) => (
-          <div key={index} className={styles["command-wrapper"]}>
-            <h4>{item.topic}</h4>
-            {item.commands?.map((cmd) => (
-              <Fragment key={cmd.id}>
-                <p>{cmd.description}</p>
+    <div className={styles["flexbox-wrapper"]}>
+      {cssCheatSheetData.flexboxData?.map((item, index) => (
+        <div
+          key={index}
+          className={styles["flexbox-content"]}
+          style={{ gridColumn: index % 2 === 0 ? 1 : 2 }}
+        >
+          <h4 className={styles["topic"]}>{item.topic}</h4>
+          {item.commands?.map((cmd) => (
+            <Fragment key={cmd.id}>
+              <h5>{cmd.heading}</h5>
+              <p>
+                {cmd.description} <br />
+                {cmd.values && <span>Values : {cmd.values}</span>}
+              </p>
+
+              {cmd.command && (
                 <div className={styles["command-container"]}>
                   <SyntaxHighlighter language="bash" style={darcula}>
                     {cmd.command}
@@ -84,13 +83,13 @@ const GitPage: React.FC = () => {
                     </span>
                   </CopyToClipboard>
                 </div>
-              </Fragment>
-            ))}
-          </div>
-        ))}
-      </div>
+              )}
+            </Fragment>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };
 
-export default GitPage;
+export default FlexBoxContent;

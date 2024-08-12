@@ -5,7 +5,7 @@ interface LanguageState {
 }
 
 const initialState: LanguageState = {
-  languages: ["Javascript", "React JS", "Git"],
+  languages: ["Javascript", "React JS", "Git", "CSS"],
 };
 
 const languageSlice = createSlice({
