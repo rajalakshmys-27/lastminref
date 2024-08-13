@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styles from "./flexgrid.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../slice/RootReducer";
@@ -12,7 +12,6 @@ import {
 } from "../../models/models";
 import useScreenSize from "../../utils/hook/useScreenSize";
 
-// Type guards to determine which type the data is
 function isFlexBoxCheatSheet(
   data: FlexBoxCheatSheet | GridCheatSheet
 ): data is FlexBoxCheatSheet {
@@ -44,7 +43,7 @@ const FlexGridContent = ({ selectedTopic }: any) => {
   const oddItems = data?.filter((_: any, index: number) => index % 2 === 0);
   const evenItems = data?.filter((_: any, index: number) => index % 2 !== 0);
 
-  const isDesktopView = useScreenSize().deviceSize.width > 991;
+  const isDesktopView = useScreenSize().deviceSize > 992;
 
   const handleCopy = (index: number) => {
     setCopied((prevState) => ({ ...prevState, [index]: true }));

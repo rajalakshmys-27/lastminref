@@ -1,38 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const useScreenSize = () => {
-  const [screenSize, setScreenSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-    orientation:
-      window.innerWidth > window.innerHeight ? "landscape" : "portrait",
-  });
+  const [screenWidth, setScreenWidth] = useState(window.screen.width);
 
   useEffect(() => {
     const handleResize = () => {
-      setScreenSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-        orientation:
-          window.innerWidth > window.innerHeight ? "landscape" : "portrait",
-      });
+      const newScreenWidth = window.screen.width;
+      if (newScreenWidth !== screenWidth) {
+        setScreenWidth(newScreenWidth);
+      }
     };
+
     window.addEventListener("resize", handleResize);
-    window.addEventListener("orientationchange", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("orientationchange", handleResize);
     };
-  }, []);
+  }, [screenWidth]);
 
-  const getDevice = (size: any) => {
-    if (size.width <= 992) {
-      return "mobile";
-    } else return "desktop";
-  };
-
-  return { deviceSize: screenSize, device: getDevice(screenSize) };
+  return { deviceSize: screenWidth };
 };
 
 export default useScreenSize;
