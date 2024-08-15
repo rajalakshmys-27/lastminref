@@ -1,0 +1,123 @@
+{
+  "gridData": [
+    {
+      "id": 1,
+      "topic": "Introduction to CSS Grid",
+      "commands": [
+        {
+          "id": 11,
+          "heading": "What is CSS Grid?",
+          "description": "CSS Grid is a two-dimensional layout system for the web, allowing you to create grid-based layouts using rows and columns.",
+          "command": ".container {\n  display: grid;\n}"
+        },
+        {
+          "id": 12,
+          "heading": "Why Use CSS Grid?",
+          "description": "CSS Grid provides powerful layout capabilities, allowing for complex designs that are difficult to achieve with other CSS methods."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "topic": "Grid Container Properties",
+      "commands": [
+        {
+          "id": 21,
+          "heading": "display",
+          "description": "Defines an element as a grid container.",
+          "command": ".container {\n  display: grid;\n}"
+        },
+        {
+          "id": 22,
+          "heading": "grid-template-columns",
+          "description": "Defines the number and size of the columns in a grid layout.",
+          "command": ".container {\n  grid-template-columns: repeat(3, 1fr);\n}"
+        },
+        {
+          "id": 23,
+          "heading": "grid-template-rows",
+          "description": "Defines the number and size of the rows in a grid layout.",
+          "command": ".container {\n  grid-template-rows: 100px 200px;\n}"
+        },
+        {
+          "id": 24,
+          "heading": "grid-template-areas",
+          "description": "Specifies grid layout by assigning names to grid areas.",
+          "command": ".container {\n  grid-template-areas: \n    'header header header'\n    'sidebar main main'\n    'footer footer footer';\n}"
+        },
+        {
+          "id": 25,
+          "heading": "grid-gap (gap)",
+          "description": "Specifies the gap between rows and columns.",
+          "command": ".container {\n  grid-gap: 10px;\n}"
+        },
+        {
+          "id": 26,
+          "heading": "justify-items",
+          "description": "Aligns grid items along the row axis (horizontally).",
+          "values": "\"start\", \"end\", \"center\", \"stretch\"",
+          "command": ".container {\n  justify-items: center;\n}"
+        },
+        {
+          "id": 27,
+          "heading": "align-items",
+          "description": "Aligns grid items along the column axis (vertically).",
+          "values": "\"start\", \"end\", \"center\", \"stretch\"",
+          "command": ".container {\n  align-items: stretch;\n}"
+        },
+        {
+          "id": 28,
+          "heading": "justify-content",
+          "description": "Aligns the grid container along the row axis.",
+          "values": "\"start\", \"end\", \"center\", \"space-between\", \"space-around\", \"space-evenly\"",
+          "command": ".container {\n  justify-content: space-between;\n}"
+        },
+        {
+          "id": 29,
+          "heading": "align-content",
+          "description": "Aligns the grid container along the column axis.",
+          "values": "\"start\", \"end\", \"center\", \"space-between\", \"space-around\", \"space-evenly\"",
+          "command": ".container {\n  align-content: space-around;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "topic": "Grid Item Properties",
+      "commands": [
+        {
+          "id": 31,
+          "heading": "grid-column-start & grid-column-end",
+          "description": "Specifies where the grid item starts and ends on the grid columns.",
+          "command": ".item {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}"
+        },
+        {
+          "id": 32,
+          "heading": "grid-row-start & grid-row-end",
+          "description": "Specifies where the grid item starts and ends on the grid rows.",
+          "command": ".item {\n  grid-row-start: 1;\n  grid-row-end: 2;\n}"
+        },
+        {
+          "id": 33,
+          "heading": "grid-area",
+          "description": "A shorthand for specifying grid-row-start, grid-column-start, grid-row-end, and grid-column-end in one declaration.",
+          "command": ".item {\n  grid-area: 1 / 1 / 2 / 3;\n}"
+        },
+        {
+          "id": 34,
+          "heading": "justify-self",
+          "description": "Aligns a grid item inside a grid cell along the row axis.",
+          "values": "\"start\", \"end\", \"center\", \"stretch\"",
+          "command": ".item {\n  justify-self: end;\n}"
+        },
+        {
+          "id": 35,
+          "heading": "align-self",
+          "description": "Aligns a grid item inside a grid cell along the column axis.",
+          "values": "\"start\", \"end\", \"center\", \"stretch\"",
+          "command": ".item {\n  align-self: center;\n}"
+        }
+      ]
+    }
+  ]
+}
