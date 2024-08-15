@@ -1,0 +1,356 @@
+{
+  "gitCommands": [
+    {
+      "id": 111,
+      "topic": "Configuration",
+      "commands": [
+        {
+          "id": 1,
+          "description": "Set username",
+          "command": "git config --global user.name \"Your Name\""
+        },
+        {
+          "id": 2,
+          "description": "Set email",
+          "command": "git config --global user.email \"you@example.com\""
+        },
+        {
+          "id": 3,
+          "description": "Set default editor",
+          "command": "git config --global core.editor \"editor\""
+        },
+        {
+          "id": 4,
+          "description": "List all configs",
+          "command": "git config --list"
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "topic": "Repository",
+      "commands": [
+        {
+          "id": 5,
+          "description": "Initialize repository",
+          "command": "git init"
+        },
+        {
+          "id": 6,
+          "description": "Clone repository",
+          "command": "git clone <repo>"
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "topic": "Branching",
+      "commands": [
+        {
+          "id": 7,
+          "description": "List branches",
+          "command": "git branch"
+        },
+        {
+          "id": 8,
+          "description": "Create branch",
+          "command": "git branch <name>"
+        },
+        {
+          "id": 9,
+          "description": "Switch branch",
+          "command": "git checkout <name>"
+        },
+        {
+          "id": 10,
+          "description": "Create and switch branch",
+          "command": "git checkout -b <name>"
+        },
+        {
+          "id": 11,
+          "description": "Delete branch",
+          "command": "git branch -d <name>"
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "topic": "Changes",
+      "commands": [
+        {
+          "id": 12,
+          "description": "Show status",
+          "command": "git status"
+        },
+        {
+          "id": 13,
+          "description": "Stage file",
+          "command": "git add <file>"
+        },
+        {
+          "id": 14,
+          "description": "Stage all changes",
+          "command": "git add ."
+        },
+        {
+          "id": 15,
+          "description": "Commit with message",
+          "command": "git commit -m \"message\""
+        },
+        {
+          "id": 16,
+          "description": "Amend last commit",
+          "command": "git commit --amend"
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "topic": "Remote",
+      "commands": [
+        {
+          "id": 17,
+          "description": "List remotes",
+          "command": "git remote"
+        },
+        {
+          "id": 18,
+          "description": "Add remote",
+          "command": "git remote add <name> <url>"
+        },
+        {
+          "id": 19,
+          "description": "Remove remote",
+          "command": "git remote remove <name>"
+        },
+        {
+          "id": 20,
+          "description": "Fetch from remote",
+          "command": "git fetch <remote>"
+        },
+        {
+          "id": 21,
+          "description": "Pull from remote",
+          "command": "git pull <remote>"
+        },
+        {
+          "id": 22,
+          "description": "Push to remote",
+          "command": "git push <remote> <branch>"
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "topic": "Stashing",
+      "commands": [
+        {
+          "id": 23,
+          "description": "Stash changes",
+          "command": "git stash"
+        },
+        {
+          "id": 24,
+          "description": "List stashes",
+          "command": "git stash list"
+        },
+        {
+          "id": 25,
+          "description": "Apply stash",
+          "command": "git stash apply"
+        },
+        {
+          "id": 26,
+          "description": "Apply and drop stash",
+          "command": "git stash pop"
+        },
+        {
+          "id": 27,
+          "description": "Drop stash",
+          "command": "git stash drop"
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "topic": "History",
+      "commands": [
+        {
+          "id": 28,
+          "description": "Show commit history",
+          "command": "git log"
+        },
+        {
+          "id": 29,
+          "description": "Condensed log",
+          "command": "git log --oneline"
+        },
+        {
+          "id": 30,
+          "description": "Graph log",
+          "command": "git log --graph"
+        },
+        {
+          "id": 31,
+          "description": "Show commit details",
+          "command": "git show <commit>"
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "topic": "Differences",
+      "commands": [
+        {
+          "id": 32,
+          "description": "Show changes",
+          "command": "git diff"
+        },
+        {
+          "id": 33,
+          "description": "Show staged changes",
+          "command": "git diff --staged"
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "topic": "Cleaning",
+      "commands": [
+        {
+          "id": 34,
+          "description": "Remove untracked files",
+          "command": "git clean -f"
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "topic": "Tagging",
+      "commands": [
+        {
+          "id": 35,
+          "description": "List tags",
+          "command": "git tag"
+        },
+        {
+          "id": 36,
+          "description": "Create tag",
+          "command": "git tag <name>"
+        },
+        {
+          "id": 37,
+          "description": "Push tag",
+          "command": "git push <remote> <tag>"
+        },
+        {
+          "id": 38,
+          "description": "Delete tag",
+          "command": "git tag -d <name>"
+        },
+        {
+          "id": 39,
+          "description": "Delete tag from remote",
+          "command": "git push <remote> --delete <name>"
+        }
+      ]
+    },
+    {
+      "id": 121,
+      "topic": "Cherry-pick",
+      "commands": [
+        {
+          "id": 40,
+          "description": "Apply commit",
+          "command": "git cherry-pick <commit>"
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "topic": "Reflog",
+      "commands": [
+        {
+          "id": 41,
+          "description": "Show HEAD log",
+          "command": "git reflog"
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "topic": "Bisect",
+      "commands": [
+        {
+          "id": 42,
+          "description": "Start binary search",
+          "command": "git bisect start"
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "topic": "Submodules",
+      "commands": [
+        {
+          "id": 43,
+          "description": "Add submodule",
+          "command": "git submodule add <repo> <path>"
+        },
+        {
+          "id": 44,
+          "description": "Init/update submodules",
+          "command": "git submodule update --init --recursive"
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "topic": "Archive",
+      "commands": [
+        {
+          "id": 45,
+          "description": "Zip branch",
+          "command": "git archive --format=zip --output=<file.zip> <branch>"
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "topic": "Blame",
+      "commands": [
+        {
+          "id": 46,
+          "description": "Show file history",
+          "command": "git blame <file>"
+        }
+      ]
+    },
+    {
+      "id": 127,
+      "topic": "Miscellaneous",
+      "commands": [
+        {
+          "id": 47,
+          "description": "Show HEAD log",
+          "command": "git reflog"
+        },
+        {
+          "id": 48,
+          "description": "Show commit details",
+          "command": "git show <commit>"
+        },
+        {
+          "id": 49,
+          "description": "Apply commit",
+          "command": "git cherry-pick <commit>"
+        },
+        {
+          "id": 50,
+          "description": "Start binary search",
+          "command": "git bisect start"
+        }
+      ]
+    }
+  ]
+}
