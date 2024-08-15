@@ -3,9 +3,18 @@ import styles from "./cssPage.module.scss";
 import FlexGridContent from "../../components/flexgrid";
 import { useDispatch } from "react-redux";
 import { cssCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
+import { AnimationIcon, CSSIcon, FlexBoxIcon, GridIcon } from "../../icons";
+import TopicItem from "../../components/topicitem";
 
 const CSSPage = () => {
-  const [selectedTopic, setSelectedTopic] = useState("");
+  const [selectedTopic, setSelectedTopic] = useState("CSS");
+
+  const topics = [
+    { icon: <CSSIcon />, label: "CSS" },
+    { icon: <FlexBoxIcon />, label: "FlexBox" },
+    { icon: <GridIcon />, label: "Grid" },
+    { icon: <AnimationIcon />, label: "Animation" },
+  ];
 
   const dispatch = useDispatch();
 
@@ -24,57 +33,17 @@ const CSSPage = () => {
           </p>
         </div>
         <div className={styles["topics"]}>
-          <div
-            className={styles["topic"]}
-            onClick={() => setSelectedTopic("flexbox")}
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M6 17V7H8V17H6Z" fill="currentColor" />
-              <path d="M16 7V17H18V7H16Z" fill="currentColor" />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M2 3H22V21H2V3ZM4 5V19H20V5H4Z"
-                fill="currentColor"
-              />
-            </svg>
-            <p>FlexBox</p>
-          </div>
-          <div
-            className={styles["topic"]}
-            onClick={() => setSelectedTopic("grid")}
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M7 7V11H11V7H7Z" fill="currentColor" />
-              <path d="M13 7H17V11H13V7Z" fill="currentColor" />
-              <path d="M13 13V17H17V13H13Z" fill="currentColor" />
-              <path d="M7 13H11V17H7V13Z" fill="currentColor" />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M3 3H21V21H3V3ZM5 5V19H19V5H5Z"
-                fill="currentColor"
-              />
-            </svg>
-            <p>Grid</p>
-          </div>
+          {topics.map((topic) => (
+            <TopicItem
+              key={topic.label}
+              icon={topic.icon}
+              label={topic.label}
+              onClick={() => setSelectedTopic(topic.label)}
+            />
+          ))}
         </div>
         <div className={styles["content"]}>
-          {selectedTopic !== "" && (
-            <FlexGridContent selectedTopic={selectedTopic} />
-          )}
+          {selectedTopic && <FlexGridContent selectedTopic={selectedTopic} />}
         </div>
       </div>
     </div>

@@ -1,0 +1,98 @@
+{
+  "cssAnimationsData": [
+    {
+      "id": 1,
+      "topic": "Introduction to CSS Animations",
+      "commands": [
+        {
+          "id": 11,
+          "heading": "What are CSS Animations?",
+          "description": "CSS Animations allow you to animate the transition between CSS property values over time.",
+          "command": "div {\n  animation: example 5s infinite;\n}"
+        },
+        {
+          "id": 12,
+          "heading": "Why Use CSS Animations?",
+          "description": "CSS Animations can enhance user experience by making interfaces more dynamic and engaging."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "topic": "Keyframe Animations",
+      "commands": [
+        {
+          "id": 21,
+          "heading": "@keyframes",
+          "description": "Defines the keyframes of the animation, specifying the styles at each point in the animation sequence.",
+          "command": "@keyframes example {\n  0% { background-color: red; }\n  100% { background-color: yellow; }\n}"
+        },
+        {
+          "id": 22,
+          "heading": "Using Keyframes",
+          "description": "Apply the keyframes to an element using the `animation` property.",
+          "command": "div {\n  animation: example 5s infinite;\n}"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "topic": "Animation Properties",
+      "commands": [
+        {
+          "id": 31,
+          "heading": "animation-name",
+          "description": "Specifies the name of the `@keyframes` animation to apply.",
+          "command": "div {\n  animation-name: example;\n}"
+        },
+        {
+          "id": 32,
+          "heading": "animation-duration",
+          "description": "Specifies the duration of the animation.",
+          "command": "div {\n  animation-duration: 5s;\n}"
+        },
+        {
+          "id": 33,
+          "heading": "animation-timing-function",
+          "description": "Specifies the speed curve of the animation.",
+          "values": "\"linear\", \"ease\", \"ease-in\", \"ease-out\", \"ease-in-out\", \"cubic-bezier\"",
+          "command": "div {\n  animation-timing-function: ease-in-out;\n}"
+        },
+        {
+          "id": 34,
+          "heading": "animation-delay",
+          "description": "Specifies a delay before the animation starts.",
+          "command": "div {\n  animation-delay: 2s;\n}"
+        },
+        {
+          "id": 35,
+          "heading": "animation-iteration-count",
+          "description": "Specifies the number of times the animation should repeat.",
+          "values": "\"infinite\", <number>",
+          "command": "div {\n  animation-iteration-count: infinite;\n}"
+        },
+        {
+          "id": 36,
+          "heading": "animation-direction",
+          "description": "Specifies whether the animation should play in reverse on alternate cycles.",
+          "values": "\"normal\", \"reverse\", \"alternate\", \"alternate-reverse\"",
+          "command": "div {\n  animation-direction: alternate;\n}"
+        },
+        {
+          "id": 37,
+          "heading": "animation-fill-mode",
+          "description": "Specifies how a CSS animation should apply styles to its target before and after it is executing.",
+          "values": "\"none\", \"forwards\", \"backwards\", \"both\"",
+          "command": "div {\n  animation-fill-mode: forwards;\n}"
+        },
+        {
+          "id": 38,
+          "heading": "animation-play-state",
+          "description": "Specifies whether the animation is running or paused.",
+          "values": "\"running\", \"paused\"",
+          "command": "div {\n  animation-play-state: paused;\n}"
+        }
+      ]
+    }
+  ]
+}

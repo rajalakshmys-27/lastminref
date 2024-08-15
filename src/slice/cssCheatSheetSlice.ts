@@ -1,12 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  CSSCheatSheetState,
-  FlexBoxCheatSheet,
-  GridCheatSheet,
-} from "../models/models";
+import { CSSCheatSheetState, CheatSheetData } from "../models/models";
 
 const initialState: CSSCheatSheetState = {
-  cssCheatSheetDetails: {} as FlexBoxCheatSheet | GridCheatSheet,
+  cssCheatSheetDetails: {} as CheatSheetData,
   isLoading: false,
   hasData: false,
   error: "",

@@ -6,39 +6,46 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import {
-  FlexBoxCheatSheet,
-  FlexGridData,
-  GridCheatSheet,
+  CSSCheatSheetData,
+  CheatSheetData,
+  isFlexBoxCheatSheet,
+  isGridCheatSheet,
+  isCSSBasicCheatSheet,
+  isAnimationCheatSheet,
 } from "../../models/models";
 import useScreenSize from "../../utils/hook/useScreenSize";
-
-function isFlexBoxCheatSheet(
-  data: FlexBoxCheatSheet | GridCheatSheet
-): data is FlexBoxCheatSheet {
-  return (data as FlexBoxCheatSheet).flexboxData !== undefined;
-}
-
-function isGridCheatSheet(
-  data: FlexBoxCheatSheet | GridCheatSheet
-): data is GridCheatSheet {
-  return (data as GridCheatSheet).gridData !== undefined;
-}
 
 const FlexGridContent = ({ selectedTopic }: any) => {
   const [copied, setCopied] = useState<{ [key: number]: boolean }>({});
 
-  const cssCheatSheetData: FlexBoxCheatSheet | GridCheatSheet = useSelector(
+  const cssCheatSheetData: CheatSheetData = useSelector(
     (state: RootState) => state.cssCheatSheet.cssCheatSheetDetails
   );
 
-  const data =
-    selectedTopic === "flexbox"
-      ? isFlexBoxCheatSheet(cssCheatSheetData)
-        ? cssCheatSheetData.flexboxData
-        : []
-      : isGridCheatSheet(cssCheatSheetData)
-      ? cssCheatSheetData.gridData
-      : [];
+  const selectData = () => {
+    if (isCSSBasicCheatSheet(cssCheatSheetData) && selectedTopic === "CSS") {
+      return cssCheatSheetData.cssBasicsData;
+    } else if (
+      isFlexBoxCheatSheet(cssCheatSheetData) &&
+      selectedTopic === "FlexBox"
+    ) {
+      return cssCheatSheetData.flexboxData;
+    } else if (
+      isGridCheatSheet(cssCheatSheetData) &&
+      selectedTopic === "Grid"
+    ) {
+      return cssCheatSheetData.gridData;
+    } else if (
+      isAnimationCheatSheet(cssCheatSheetData) &&
+      selectedTopic === "Animation"
+    ) {
+      return cssCheatSheetData.cssAnimationsData;
+    } else {
+      return [];
+    }
+  };
+
+  const data = selectData();
 
   const oddItems = data?.filter((_: any, index: number) => index % 2 === 0);
   const evenItems = data?.filter((_: any, index: number) => index % 2 !== 0);
@@ -52,7 +59,7 @@ const FlexGridContent = ({ selectedTopic }: any) => {
     }, 2000);
   };
 
-  const gridItem = (item: FlexGridData, index: number) => {
+  const gridItem = (item: CSSCheatSheetData, index: number) => {
     return (
       <div key={index} className={styles["flexgrid-content"]}>
         <h4 className={styles["topic"]}>{item.topic}</h4>

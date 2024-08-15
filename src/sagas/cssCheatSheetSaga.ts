@@ -6,19 +6,38 @@ import {
   getCSSCheatSheetDataFailure,
 } from "../slice/cssCheatSheetSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
+import {
+  CSS_API_URL,
+  FLEX_BOX_API_URL,
+  GRID_API_URL,
+  ANIMATION_API_URL,
+} from "../constants/apiUrls";
 
-const FLEX_BOX_API_URL = "./data/flexboxData.json";
-const GRID_API_URL = "./data/gridData.json";
+let API_URL = "";
+
+const apiURLSelect = (topic: string) => {
+  switch (topic) {
+    case "CSS":
+      API_URL = CSS_API_URL;
+      break;
+    case "FlexBox":
+      API_URL = FLEX_BOX_API_URL;
+      break;
+    case "Grid":
+      API_URL = GRID_API_URL;
+      break;
+    case "Animation":
+      API_URL = ANIMATION_API_URL;
+      break;
+    default:
+      API_URL = CSS_API_URL;
+      break;
+  }
+};
 
 function* getCSSCheatSheetData(action: PayloadAction<any>): any {
   try {
-    let API_URL = "";
-    if (action.payload.selectedTopic === "flexbox") {
-      API_URL = FLEX_BOX_API_URL;
-    }
-    if (action.payload.selectedTopic === "grid") {
-      API_URL = GRID_API_URL;
-    }
+    apiURLSelect(action.payload.selectedTopic);
     const response: any = yield call(axios.get, API_URL, { baseURL: "/" });
     yield put(getCSSCheatSheetDataSuccess(response.data));
   } catch (error: any) {
