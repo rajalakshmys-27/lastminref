@@ -40,7 +40,7 @@ export interface CheatSheetData {
 export interface CSSCheatSheetState {
   cssCheatSheetDetails: CheatSheetData;
   isLoading: boolean;
-  hasData: boolean; 
+  hasData: boolean;
   error: string | null;
 }
 
@@ -56,4 +56,5 @@ export interface TopicItemProps {
   icon: React.ReactNode;
   label: string;
   onClick: () => void;
+  isActive: boolean;
 }

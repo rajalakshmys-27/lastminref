@@ -46,6 +46,7 @@ const CSSPage = () => {
               icon={topic.icon}
               label={topic.label}
               onClick={() => setSelectedTopic(topic.value)}
+              isActive={selectedTopic === topic.value}
             />
           ))}
         </div>

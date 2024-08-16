@@ -12,6 +12,13 @@
   padding: 30px;
   gap: 21px;
   width: 12rem;
+  &:focus {
+    background: radial-gradient(
+      circle,
+      rgba(44, 62, 80, 1) 0%,
+      rgba(30, 30, 30, 1) 100%
+    );
+  }
 
   @media (max-width: 480px) {
     width: 10rem;
@@ -23,4 +30,12 @@
       margin: 0;
     }
   }
+}
+
+.active {
+  background: radial-gradient(
+    circle,
+    rgba(44, 62, 80, 1) 0%,
+    rgba(30, 30, 30, 1) 100%
+  );
 }
