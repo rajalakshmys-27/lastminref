@@ -21,6 +21,7 @@ const FlexGridContent = ({ selectedTopic }: any) => {
 
   const selectData = () => {
     const dataKey = `${selectedTopic}Data`;
+    console.log("data", cssCheatSheetData, dataKey);
     return getCheatSheetData(cssCheatSheetData, dataKey) || [];
   };
 

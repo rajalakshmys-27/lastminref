@@ -11,6 +11,7 @@ import {
   FLEX_BOX_API_URL,
   GRID_API_URL,
   ANIMATION_API_URL,
+  SASS_API_URL,
 } from "../constants/apiUrls";
 
 let API_URL = "";
@@ -28,6 +29,9 @@ const apiURLSelect = (topic: string) => {
       break;
     case "animation":
       API_URL = ANIMATION_API_URL;
+      break;
+    case "sassBasics":
+      API_URL = SASS_API_URL;
       break;
     default:
       API_URL = CSS_API_URL;

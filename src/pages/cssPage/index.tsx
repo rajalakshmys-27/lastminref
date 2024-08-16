@@ -3,7 +3,13 @@ import styles from "./cssPage.module.scss";
 import FlexGridContent from "../../components/flexgrid";
 import { useDispatch } from "react-redux";
 import { cssCheatSheetDataRequest } from "../../slice/cssCheatSheetSlice";
-import { AnimationIcon, CSSIcon, FlexBoxIcon, GridIcon } from "../../icons";
+import {
+  AnimationIcon,
+  CSSIcon,
+  FlexBoxIcon,
+  GridIcon,
+  SassIcon,
+} from "../../icons";
 import TopicItem from "../../components/topicitem";
 
 const CSSPage = () => {
@@ -14,6 +20,7 @@ const CSSPage = () => {
     { icon: <FlexBoxIcon />, label: "FlexBox", value: "flexbox" },
     { icon: <GridIcon />, label: "Grid", value: "grid" },
     { icon: <AnimationIcon />, label: "Animation", value: "animation" },
+    { icon: <SassIcon />, label: "Sass", value: "sassBasics" },
   ];
 
   const dispatch = useDispatch();

@@ -1,0 +1,102 @@
+{
+  "sassBasicsData": [
+    {
+      "id": 1,
+      "topic": "Introduction to Sass",
+      "commands": [
+        {
+          "id": 11,
+          "heading": "What is Sass?",
+          "description": "Sass (Syntactically Awesome Style Sheets) is a preprocessor scripting language that is interpreted or compiled into CSS. It extends CSS with features like variables, nested rules, and mixins."
+        },
+        {
+          "id": 12,
+          "heading": "Why Use Sass?",
+          "description": "Sass makes your stylesheets more maintainable and easier to write by providing features like variables, nesting, partials, imports, and more."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "topic": "Variables in Sass",
+      "commands": [
+        {
+          "id": 21,
+          "heading": "Defining Variables",
+          "description": "Variables in Sass allow you to store values like colors, fonts, or any CSS value for reuse throughout your stylesheet.",
+          "command": "$primary-color: #333;\nbody {\n  color: $primary-color;\n}"
+        },
+        {
+          "id": 22,
+          "heading": "Using Variables",
+          "description": "You can use defined variables anywhere in your stylesheets to ensure consistency and ease of updates."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "topic": "Nesting in Sass",
+      "commands": [
+        {
+          "id": 31,
+          "heading": "Nesting Selectors",
+          "description": "Sass allows you to nest your CSS selectors in a way that follows the same visual hierarchy of your HTML.",
+          "command": "nav {\n  ul {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    li { display: inline-block; }\n  }\n}"
+        },
+        {
+          "id": 32,
+          "heading": "Nesting Properties",
+          "description": "You can also nest properties to make your code more readable and reduce repetition.",
+          "command": ".box {\n  border: {\n    style: solid;\n    width: 1px;\n    color: #ccc;\n  }\n}"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "topic": "Partials and Import",
+      "commands": [
+        {
+          "id": 41,
+          "heading": "Using Partials",
+          "description": "You can create partial Sass files that contain small segments of CSS that you want to include in other stylesheets. Partial files are named with a leading underscore (e.g., _variables.scss)."
+        },
+        {
+          "id": 42,
+          "heading": "Importing Partials",
+          "description": "Use the `@import` directive to include partials in your main stylesheet.",
+          "command": "@import 'variables';\n@import 'mixins';"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "topic": "Mixins in Sass",
+      "commands": [
+        {
+          "id": 51,
+          "heading": "Creating Mixins",
+          "description": "Mixins allow you to create reusable blocks of code that can be included in other selectors.",
+          "command": "@mixin border-radius($radius) {\n  -webkit-border-radius: $radius;\n  -moz-border-radius: $radius;\n  border-radius: $radius;\n}"
+        },
+        {
+          "id": 52,
+          "heading": "Using Mixins",
+          "description": "You can include mixins in any selector using the `@include` directive.",
+          "command": ".box { @include border-radius(10px); }"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "topic": "Inheritance in Sass",
+      "commands": [
+        {
+          "id": 61,
+          "heading": "Extending Selectors",
+          "description": "Sass allows you to share a set of CSS properties from one selector to another using the `@extend` directive.",
+          "command": "%message {\n  border: 1px solid #ccc;\n  padding: 10px;\n}\n.success { @extend %message; background-color: #e6ffed; }\n.error { @extend %message; background-color: #ffe6e6; }"
+        }
+      ]
+    }
+  ]
+}
