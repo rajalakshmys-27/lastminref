@@ -13,6 +13,11 @@
   gap: 21px;
   width: 12rem;
 
+  @media (max-width: 480px) {
+    width: 10rem;
+    padding: 25px 15px;
+  }
+
   :global {
     p {
       margin: 0;
