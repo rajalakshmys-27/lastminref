@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages";
 import GitPage from "./pages/gitPage";
 import CSSPage from "./pages/cssPage";
+import JSPage from "./pages/jsPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       },
       { path: "/git", element: <GitPage /> },
       { path: "/css", element: <CSSPage /> },
+      { path: "/javascript", element: <JSPage /> },
     ],
   },
 ]);
