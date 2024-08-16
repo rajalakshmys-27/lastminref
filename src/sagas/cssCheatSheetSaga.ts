@@ -17,16 +17,16 @@ let API_URL = "";
 
 const apiURLSelect = (topic: string) => {
   switch (topic) {
-    case "CSS":
+    case "cssbasics":
       API_URL = CSS_API_URL;
       break;
-    case "FlexBox":
+    case "flexbox":
       API_URL = FLEX_BOX_API_URL;
       break;
-    case "Grid":
+    case "grid":
       API_URL = GRID_API_URL;
       break;
-    case "Animation":
+    case "animation":
       API_URL = ANIMATION_API_URL;
       break;
     default:

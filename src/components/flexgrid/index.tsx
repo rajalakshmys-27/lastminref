@@ -6,12 +6,9 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import {
-  CSSCheatSheetData,
   CheatSheetData,
-  isFlexBoxCheatSheet,
-  isGridCheatSheet,
-  isCSSBasicCheatSheet,
-  isAnimationCheatSheet,
+  CSSCheatSheetData,
+  getCheatSheetData,
 } from "../../models/models";
 import useScreenSize from "../../utils/hook/useScreenSize";
 
@@ -23,26 +20,8 @@ const FlexGridContent = ({ selectedTopic }: any) => {
   );
 
   const selectData = () => {
-    if (isCSSBasicCheatSheet(cssCheatSheetData) && selectedTopic === "CSS") {
-      return cssCheatSheetData.cssBasicsData;
-    } else if (
-      isFlexBoxCheatSheet(cssCheatSheetData) &&
-      selectedTopic === "FlexBox"
-    ) {
-      return cssCheatSheetData.flexboxData;
-    } else if (
-      isGridCheatSheet(cssCheatSheetData) &&
-      selectedTopic === "Grid"
-    ) {
-      return cssCheatSheetData.gridData;
-    } else if (
-      isAnimationCheatSheet(cssCheatSheetData) &&
-      selectedTopic === "Animation"
-    ) {
-      return cssCheatSheetData.cssAnimationsData;
-    } else {
-      return [];
-    }
+    const dataKey = `${selectedTopic}Data`;
+    return getCheatSheetData(cssCheatSheetData, dataKey) || [];
   };
 
   const data = selectData();

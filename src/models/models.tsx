@@ -18,7 +18,6 @@ export interface GitCheatSheetState {
   hasData: boolean;
   error: string;
 }
-
 export interface CSSCodeSnippet {
   id: number;
   heading: string;
@@ -31,52 +30,26 @@ export interface CSSCheatSheetData {
   topic: string;
   commands: CSSCodeSnippet[];
 }
-export interface FlexBoxCheatSheet {
-  flexboxData: CSSCheatSheetData[];
+
+// Generic CheatSheet Interface
+export interface CheatSheetData {
+  [key: string]: CSSCheatSheetData[];
 }
 
-export interface GridCheatSheet {
-  gridData: CSSCheatSheetData[];
-}
-export interface CSSBasicCheatSheet {
-  cssBasicsData: CSSCheatSheetData[];
-}
-export interface AnimationCheatSheet {
-  cssAnimationsData: CSSCheatSheetData[];
-}
-
-export type CheatSheetData =
-  | CSSBasicCheatSheet
-  | FlexBoxCheatSheet
-  | GridCheatSheet
-  | AnimationCheatSheet;
+// State Interface
 export interface CSSCheatSheetState {
   cssCheatSheetDetails: CheatSheetData;
   isLoading: boolean;
-  hasData: boolean;
-  error: string;
+  hasData: boolean; 
+  error: string | null;
 }
 
-export function isFlexBoxCheatSheet(
-  data: CheatSheetData
-): data is FlexBoxCheatSheet {
-  return "flexboxData" in data;
-}
-
-export function isGridCheatSheet(data: CheatSheetData): data is GridCheatSheet {
-  return "gridData" in data;
-}
-
-export function isCSSBasicCheatSheet(
-  data: CheatSheetData
-): data is CSSBasicCheatSheet {
-  return "cssBasicsData" in data;
-}
-
-export function isAnimationCheatSheet(
-  data: CheatSheetData
-): data is AnimationCheatSheet {
-  return "cssAnimationsData" in data;
+// Type Guard Functions
+export function getCheatSheetData(
+  data: CheatSheetData,
+  key: string
+): CSSCheatSheetData[] | undefined {
+  return data[key];
 }
 
 export interface TopicItemProps {

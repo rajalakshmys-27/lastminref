@@ -7,13 +7,13 @@ import { AnimationIcon, CSSIcon, FlexBoxIcon, GridIcon } from "../../icons";
 import TopicItem from "../../components/topicitem";
 
 const CSSPage = () => {
-  const [selectedTopic, setSelectedTopic] = useState("CSS");
+  const [selectedTopic, setSelectedTopic] = useState("cssbasics");
 
   const topics = [
-    { icon: <CSSIcon />, label: "CSS" },
-    { icon: <FlexBoxIcon />, label: "FlexBox" },
-    { icon: <GridIcon />, label: "Grid" },
-    { icon: <AnimationIcon />, label: "Animation" },
+    { icon: <CSSIcon />, label: "CSS Basics", value: "cssbasics" },
+    { icon: <FlexBoxIcon />, label: "FlexBox", value: "flexbox" },
+    { icon: <GridIcon />, label: "Grid", value: "grid" },
+    { icon: <AnimationIcon />, label: "Animation", value: "animation" },
   ];
 
   const dispatch = useDispatch();
@@ -35,10 +35,10 @@ const CSSPage = () => {
         <div className={styles["topics"]}>
           {topics.map((topic) => (
             <TopicItem
-              key={topic.label}
+              key={topic.value}
               icon={topic.icon}
               label={topic.label}
-              onClick={() => setSelectedTopic(topic.label)}
+              onClick={() => setSelectedTopic(topic.value)}
             />
           ))}
         </div>
