@@ -23,6 +23,41 @@
           "code": "axios.get('https://api.example.com/data')\n  .then(response => console.log(response.data))\n  .catch(error => console.error('There was an error!', error));"
         }
       ]
+    },
+    {
+      "id": 2,
+      "topic": "Understanding CORS (Cross-Origin Resource Sharing)",
+      "snippets": [
+        {
+          "id": 201,
+          "title": "What is CORS?",
+          "description": "CORS is a security feature implemented by web browsers that controls access to resources (like APIs or fonts) on a web page from another domain outside the domain from which the resource originated.",
+          "content": "<h5>The Same-Origin Policy:</h5><p>To understand CORS, we first need to understand the Same-Origin Policy. This policy is a fundamental security measure in web browsers that restricts how a document or script loaded from one origin can interact with resources from another origin. An origin is defined by the combination of protocol, domain, and port.</p><h5>For Example:</h5><ul><li>https://example.com/page1 and https://example.com/page2 have the same origin.</li><li>https://example.com and http://example.com have different origins (different protocol).</li><li>https://example.com and https://api.example.com have different origins (different subdomain).</li></ul>"
+        },
+        {
+          "id": 202,
+          "title": "Why CORS Exists?",
+          "description": "CORS was introduced to allow servers to specify which origins are allowed to access their resources, thereby relaxing the Same-Origin Policy in a controlled manner. This is crucial for modern web applications that often need to make requests to APIs hosted on different domains."
+        },
+        {
+          "id": 203,
+          "title": "Common CORS Errors",
+          "description": "Developers often encounter CORS errors when trying to make requests from a web application to an API on a different domain. A typical CORS error might look like this:",
+          "content": "<blockquote>Access to fetch at 'https://api.example.com/data' from origin 'https://myapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.</blockquote>"
+        },
+        {
+          "id": 204,
+          "title": "How CORS Works?",
+          "description": "CORS works by using specific headers in the request and response. Here’s how it generally works:",
+          "content": "<ul><li>The browser sends the request with an <strong>Origin</strong> header specifying the origin of the requesting page.</li><li>The server can then respond with:<ul><li>An <strong>Access-Control-Allow-Origin</strong> header specifying which origins are allowed.</li><li>Other CORS headers controlling allowed methods, headers, etc.</li></ul></li><li>If the server's response doesn't include appropriate CORS headers, the browser blocks the response.</li></ul>"
+        },
+        {
+          "id": 205,
+          "title": "Resolving CORS Issues",
+          "description": "Here are some common ways to resolve CORS issues:",
+          "content": "<ol><li><strong>Server-side Configuration:</strong> Configure the server to include the correct CORS headers.</li><li><strong>Using a Proxy:</strong> Set up a proxy server that adds the necessary CORS headers.</li><li><strong>JSONP (for GET requests only):</strong> Use JSONP to bypass CORS for GET requests by using script tags, which aren’t subject to the Same-Origin Policy.</li></ol>"
+        }
+      ]
     }
   ]
 }

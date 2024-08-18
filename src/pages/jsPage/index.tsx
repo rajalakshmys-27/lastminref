@@ -37,19 +37,24 @@ const JSPage = () => {
         <div key={snippet.id} className={styles["grid-content"]}>
           <h5>{snippet.title}</h5>
           <p>{snippet.description}</p>
-          <div className={styles["command-container"]}>
-            <SyntaxHighlighter language="bash" style={darcula}>
-              {snippet.code}
-            </SyntaxHighlighter>
-            <CopyToClipboard
-              text={snippet.code}
-              onCopy={() => handleCopy(snippet.id)}
-            >
-              <span className={styles["copy-button"]}>
-                {copied[snippet.id] ? <CopyIcon /> : <CheckIcon />}
-              </span>
-            </CopyToClipboard>
-          </div>
+          {snippet.code && (
+            <div className={styles["command-container"]}>
+              <SyntaxHighlighter language="bash" style={darcula}>
+                {snippet.code}
+              </SyntaxHighlighter>
+              <CopyToClipboard
+                text={snippet.code}
+                onCopy={() => handleCopy(snippet.id)}
+              >
+                <span className={styles["copy-button"]}>
+                  {copied[snippet.id] ? <CopyIcon /> : <CheckIcon />}
+                </span>
+              </CopyToClipboard>
+            </div>
+          )}
+          {snippet.content && (
+            <div dangerouslySetInnerHTML={{ __html: snippet.content }} />
+          )}
         </div>
       ))}
     </>

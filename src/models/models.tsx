@@ -63,7 +63,8 @@ export interface Snippet {
   id: number;
   title: string;
   description: string;
-  code: string;
+  code?: string;
+  content?: string;
 }
 
 export interface JSGuide {

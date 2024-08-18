@@ -24,76 +24,83 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  background: #f4f4f4;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #cdbcbc;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 1.5rem;
-  color: #cdbcbc; /* Contrasting color for h2 */
-}
-
-.description p {
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #bdc3c7;
-}
-
-.languages {
-  margin-bottom: 2rem;
-}
-
-.language-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.language-item {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
-  margin: 10px;
-  padding: 20px;
-  min-width: 200px;
-  max-width: 250px;
-  text-align: center;
-  transition: transform 0.3s, background 0.3s;
-
-  & > a {
-    text-decoration: none;
-    color: #ecf0f1;
+  .description {
+    & :global {
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #cdbcbc;
+      }
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+        color: #bdc3c7;
+      }
+    }
   }
-}
 
-.language-item:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.2);
-}
+  .languages {
+    margin-bottom: 2rem;
 
-.language-item p {
-  margin: 0;
-  font-size: 16px;
+    & :global {
+      h2 {
+        font-size: 20px;
+        margin-bottom: 1.5rem;
+        color: #cdbcbc; /* Contrasting color for h2 */
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+    }
+
+    .language-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      & :global {
+        li {
+          background-color: #f4f4f4;
+          margin: 5px 0;
+          padding: 10px;
+          border-radius: 4px;
+        }
+      }
+
+      .language-item {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        margin: 10px;
+        padding: 20px;
+        min-width: 200px;
+        max-width: 250px;
+        text-align: center;
+        transition: transform 0.3s, background-color 0.3s;
+
+        & :global {
+          a {
+            text-decoration: none;
+            color: #ecf0f1;
+          }
+          p {
+            margin: 0;
+            font-size: 16px;
+          }
+        }
+
+        &:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+  }
 }
