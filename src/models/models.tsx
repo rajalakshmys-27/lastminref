@@ -58,3 +58,26 @@ export interface TopicItemProps {
   onClick: () => void;
   isActive: boolean;
 }
+
+export interface Snippet {
+  id: number;
+  title: string;
+  description: string;
+  code: string;
+}
+
+export interface JSGuide {
+  id: number;
+  topic: string;
+  snippets: Snippet[];
+}
+export interface JSCheatSheetData {
+  jsGuide: JSGuide[];
+}
+
+export interface JSCheatSheetState {
+  jsCheatSheetDetails: JSCheatSheetData;
+  isLoading: boolean;
+  hasData: boolean;
+  error: string | null;
+}

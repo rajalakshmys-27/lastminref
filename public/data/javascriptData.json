@@ -1,0 +1,28 @@
+{
+  "jsGuide": [
+    {
+      "id": 1,
+      "topic": "3 Ways to Make API Calls in JavaScript",
+      "snippets": [
+        {
+          "id": 101,
+          "title": "1. Using the Fetch API",
+          "description": "The Fetch API is a modern, promise-based mechanism to make asynchronous requests to servers. It's a part of the window object in browsers.",
+          "code": "fetch('https://api.example.com/data')\n  .then(response => response.json())\n  .then(data => console.log(data))\n  .catch(error => console.error('There was an error!', error));"
+        },
+        {
+          "id": 102,
+          "title": "2. Using XMLHttpRequest",
+          "description": "XMLHttpRequest (XHR) is an older way of making HTTP requests in JavaScript. It's more complex than Fetch but is supported in very old browsers.",
+          "code": "var xhr = new XMLHttpRequest();\n  xhr.open(\"GET\", \"https://api.example.com/data\", true);\n  xhr.onreadystatechange = function () {\n    if (xhr.readyState === 4 && xhr.status === 200) {\n      console.log(JSON.parse(xhr.responseText));\n    }\n  };\n  xhr.send();"
+        },
+        {
+          "id": 103,
+          "title": "3. Using Axios (a third-party library)",
+          "description": "Axios is a popular, promise-based HTTP client that works in both browsers and Node.js. It simplifies making HTTP requests.",
+          "code": "axios.get('https://api.example.com/data')\n  .then(response => console.log(response.data))\n  .catch(error => console.error('There was an error!', error));"
+        }
+      ]
+    }
+  ]
+}
