@@ -29,11 +29,25 @@
   align-items: center;
 }
 
+.js-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @media (max-width: 992px) {
+    gap: 20px;
+  }
+}
+
 .first-topic {
   display: flex;
   flex-direction: column;
   background: #15252c;
   padding: 50px;
+
+  @media (max-width: 992px) {
+    padding: 20px 20px;
+  }
 }
 
 .grid-container {
@@ -45,7 +59,7 @@
   // box-sizing: border-box;
 
   @media (max-width: 992px) {
-    grid-template-columns: 100%;
+    grid-template-columns: calc(100vw - 40px);
   }
 }
 
@@ -55,7 +69,6 @@
   background-color: rgb(15, 28, 34);
   padding: 20px;
   border-radius: 0.5rem;
-  align-self: stretch;
   margin-bottom: 1.5rem;
 
   & :global {
