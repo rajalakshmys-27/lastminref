@@ -87,6 +87,10 @@
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
 
+  @media (max-width: 768px) and (min-width: 992px) {
+    align-items: flex-start;
+  }
+
   & :global {
     ul,
     ol {
