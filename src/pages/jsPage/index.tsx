@@ -35,8 +35,11 @@ const JSPage = () => {
     <>
       {item?.snippets?.map((snippet: Snippet) => (
         <div key={snippet.id} className={styles["grid-content"]}>
-          <h5>{snippet.title}</h5>
-          <p>{snippet.description}</p>
+          <div className={styles["grid-header"]}>
+            <h5>{snippet.title}</h5>
+            <p>{snippet.description}</p>
+          </div>
+
           {snippet.code && (
             <div className={styles["command-container"]}>
               <SyntaxHighlighter language="bash" style={darcula}>

@@ -81,6 +81,7 @@
 .grid-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: rgb(15, 28, 34);
   padding: 20px;
   border-radius: 0.5rem;
@@ -153,6 +154,12 @@
       }
     }
   }
+}
+
+.grid-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .topic {
