@@ -52,11 +52,26 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, calc(100vw - 55rem));
   // grid-auto-rows: auto;
   // grid-auto-flow: dense;
   gap: 2rem;
   // box-sizing: border-box;
+  @media (min-width: 1301px) and (max-width: 1440px) {
+    grid-template-columns: repeat(2, calc(100vw - 52rem));
+  }
+
+  @media (min-width: 1201px) and (max-width: 1300px) {
+    grid-template-columns: repeat(2, calc(100vw - 45rem));
+  }
+
+  @media (min-width: 1025px) and (max-width: 1200px) {
+    grid-template-columns: repeat(2, calc(100vw - 43rem));
+  }
+
+  @media (min-width: 993px) and (max-width: 1024px) {
+    grid-template-columns: repeat(2, calc(100vw - 40rem));
+  }
 
   @media (max-width: 992px) {
     grid-template-columns: calc(100vw - 40px);
@@ -152,6 +167,8 @@
   background-color: #15252c;
   padding: 15px 12px;
   margin-bottom: 16px;
+  overflow: auto;
+  max-width: calc(100% - 2rem);
 
   > pre {
     padding: 0 !important;

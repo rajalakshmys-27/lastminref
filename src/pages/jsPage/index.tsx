@@ -33,7 +33,7 @@ const JSPage = () => {
 
   const gridContent = (item: JSGuide) => (
     <>
-      {item.snippets.map((snippet: Snippet) => (
+      {item?.snippets?.map((snippet: Snippet) => (
         <div key={snippet.id} className={styles["grid-content"]}>
           <h5>{snippet.title}</h5>
           <p>{snippet.description}</p>
