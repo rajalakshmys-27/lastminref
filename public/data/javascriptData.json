@@ -148,6 +148,42 @@
           "code": "const array = [1, 2, 3];\nconst newArray = array.with(1, 4);\nconsole.log(newArray); // Output: [1, 4, 3]\nconsole.log(array);  // Original array remains unchanged: [1, 2, 3]"
         }
       ]
+    },
+    {
+      "id": 4,
+      "topic": "Node.js vs Express.js",
+      "snippets": [
+        {
+          "id": 401,
+          "title": "1. Node.js Example: Building a Simple Server",
+          "description": "This example demonstrates how to create a basic server in Node.js using the built-in 'http' module. It handles two routes: the root '/' and '/message'. The server listens on port 3000.",
+          "files": [
+            {
+              "filename": "app.js",
+              "code": "const http = require(\"http\");\nconst routes = require(\"./routes\");\n\nconst server = http.createServer(routes.handler);\nserver.listen(3000);"
+            },
+            {
+              "filename": "routes.js",
+              "code": "const fs = require(\"fs\");\n\nconst requestHandler = (req, res) => {\n    const url = req.url;\n    const method = req.method;\n\n    if (url === \"/\") {\n        res.write(\"<html>\");\n        res.write(\"<head><title>Enter Message</title></head>\");\n        res.write(`<body><form action=\"/message\" method=\"POST\"><input type=\"text\" name=\"message\"><button type=\"submit\">Send</button></form></body>`);\n        res.write(\"</html>\");\n        return res.end();\n    }\n\n    if (url === \"/message\" && method === \"POST\") {\n        const body = [];\n        req.on(\"data\", (chunk) => {\n            console.log(\"chunk: \", chunk);\n            body.push(chunk);\n        });\n        req.on(\"end\", () => {\n            const parsedBody = Buffer.concat(body).toString();\n            const message = parsedBody.split(\"=\")[1];\n            console.log(\"message:\", message);\n            fs.writeFile(\"message.txt\", message, (err) => {\n                res.statusCode = 302;\n                res.setHeader(\"Location\", \"/\");\n                return res.end();\n            });\n        });\n    } else {\n        res.setHeader(\"Content-Type\", \"text/html\");\n        res.write(\"<html>\");\n        res.write(\"<head><title>Node.js Page</title></head>\");\n        res.write(\"<body><h1>Hi from Node.js server</h1></body>\");\n        res.write(\"</html>\");\n        res.end();\n    }\n};\n\nmodule.exports = { handler: requestHandler };"
+            }
+          ]
+        },
+        {
+          "id": 402,
+          "title": "2. Express.js Example: Simplifying Server Creation",
+          "description": "This example shows how to achieve the same functionality as the Node.js example using Express.js, a popular framework that simplifies the process of building servers. The app listens on port 3000.",
+          "files": [
+            {
+              "filename": "app.js",
+              "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst routes = require('./routes');\nconst app = express();\n\napp.use(bodyParser.urlencoded({ extended: false })); // Parses URL-encoded bodies\napp.use(routes);\n\napp.listen(3000, () => {\n  console.log('Server is running on port 3000');\n});"
+            },
+            {
+              "filename": "routes.js",
+              "code": "const express = require('express');\nconst fs = require('fs');\nconst router = express.Router();\n\nrouter.get('/', (req, res) => {\n  res.send(`\n    <html>\n      <head><title>Enter Message</title></head>\n      <body>\n        <form action=\"/message\" method=\"POST\">\n          <input type=\"text\" name=\"message\">\n          <button type=\"submit\">Send</button>\n        </form>\n      </body>\n    </html>\n  `);\n});\n\nrouter.post('/message', (req, res) => {\n  const message = req.body.message; // Access the parsed message directly from req.body\n\n  fs.writeFile('message.txt', message, (err) => {\n    if (err) {\n      console.error(err);\n      return res.status(500).send('Error writing file');\n    }\n\n    res.redirect('/');\n  });\n});\n\nrouter.get('*', (req, res) => {\n  res.send(`\n    <html>\n      <head><title>Node.js Page</title></head>\n      <body><h1>Hi from Node.js server</h1></body>\n    </html>\n  `);\n});\n\nmodule.exports = router;"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -59,12 +59,18 @@ export interface TopicItemProps {
   isActive: boolean;
 }
 
+export interface FileArray {
+  filename: string;
+  code: string;
+}
+
 export interface Snippet {
   id: number;
   title: string;
   description: string;
   code?: string;
   content?: string;
+  files?: FileArray[];
 }
 
 export interface JSGuide {

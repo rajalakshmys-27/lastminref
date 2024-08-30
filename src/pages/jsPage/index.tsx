@@ -56,8 +56,30 @@ const JSPage = () => {
             </div>
           )}
           {snippet.content && (
-            <div dangerouslySetInnerHTML={{ __html: snippet.content }} />
+            <div
+              dangerouslySetInnerHTML={{ __html: snippet.content }}
+              className={styles["innerHtml"]}
+            />
           )}
+          {snippet.files &&
+            snippet.files.map((file, index) => (
+              <div key={index} className={styles["file-container"]}>
+                <h5>{file.filename}</h5>
+                <div className={styles["command-container"]}>
+                  <SyntaxHighlighter language="bash" style={darcula}>
+                    {file.code}
+                  </SyntaxHighlighter>
+                  <CopyToClipboard
+                    text={file.code}
+                    onCopy={() => handleCopy(index)}
+                  >
+                    <span className={styles["copy-button"]}>
+                      {copied[snippet.id] ? <CopyIcon /> : <CheckIcon />}
+                    </span>
+                  </CopyToClipboard>
+                </div>
+              </div>
+            ))}
         </div>
       ))}
     </>
